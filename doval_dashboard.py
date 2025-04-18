@@ -17,8 +17,8 @@ base64_logo = load_logo("Next Level Nine Logo.png")
 st.set_page_config(page_title='📊 MLB Pitching Dashboard', page_icon='⚾', layout='wide')
 
 # Intro Summary for the Dashboard
-st.markdown(section_dashboard_insights, unsafe_allow_html=True)
-st.markdown('---')
+#st.markdown(section_dashboard_insights, unsafe_allow_html=True)
+#st.markdown('---')
 
 # Load dataset
 file_path = 'camilo_doval_5yr_statcast.csv'
