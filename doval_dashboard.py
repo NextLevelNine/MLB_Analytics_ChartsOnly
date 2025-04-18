@@ -16,6 +16,10 @@ base64_logo = load_logo("Next Level Nine Logo.png")
 # Set page config
 st.set_page_config(page_title='📊 MLB Pitching Dashboard', page_icon='⚾', layout='wide')
 
+# Intro Summary for the Dashboard
+st.markdown(section_dashboard_insights, unsafe_allow_html=True)
+st.markdown('---')
+
 # Load dataset
 file_path = 'camilo_doval_5yr_statcast.csv'
 df = pd.read_csv(file_path)
@@ -104,10 +108,8 @@ st.pyplot(fig4)
 # SECTION: Insights & Footer
 # -----------------------------
 st.markdown('---')
-st.markdown(section_dashboard_insights, unsafe_allow_html=True)
 
 # Footer
-st.markdown('---')
 st.markdown('<center>Designed by Liza Osterdock.</center>', unsafe_allow_html=True)
 st.markdown('<center>© 2025 Next Level Nine. All rights reserved.</center>', unsafe_allow_html=True)
 st.markdown('<br>', unsafe_allow_html=True)
@@ -115,3 +117,4 @@ st.markdown('<br>', unsafe_allow_html=True)
 if base64_logo:
     image_html = f"<div style='text-align: center; margin-top: 10px;'><img src='data:image/png;base64,{base64_logo}' width='200'/></div>"
     st.markdown(image_html, unsafe_allow_html=True)
+
