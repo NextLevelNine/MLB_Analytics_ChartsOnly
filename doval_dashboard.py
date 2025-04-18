@@ -38,10 +38,12 @@ st.dataframe(velocity_spin)
 
 fig1, ax1 = plt.subplots(figsize=(5, 3))
 velocity_spin.plot(marker='o', ax=ax1)
-plt.title('Velocity & Spin Rate by Year')
-plt.xlabel('Year')
-plt.ylabel('Average')
-plt.grid(True)
+ax1.set_title('Velocity & Spin Rate by Year')
+ax1.set_xlabel('Year')
+ax1.set_ylabel('Average')
+ax1.grid(True)
+ax1.set_xticks(velocity_spin.index)
+ax1.set_xticklabels(velocity_spin.index.astype(int))
 st.pyplot(fig1)
 
 # -----------------------------
@@ -57,10 +59,12 @@ st.dataframe(pitch_percent)
 
 fig2, ax2 = plt.subplots(figsize=(5, 3))
 pitch_percent.plot(kind='bar', stacked=True, ax=ax2)
-plt.title('Pitch Usage Percentages by Year')
-plt.ylabel('Percentage (%)')
-plt.xlabel('Year')
-plt.legend(title='Pitch Type', bbox_to_anchor=(1.05, 1), loc='upper left')
+ax2.set_title('Pitch Usage Percentages by Year')
+ax2.set_ylabel('Percentage (%)')
+ax2.set_xlabel('Year')
+ax2.set_xticks(pitch_percent.index)
+ax2.set_xticklabels(pitch_percent.index.astype(int))
+ax2.legend(title='Pitch Type', bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 st.pyplot(fig2)
 
@@ -75,10 +79,12 @@ st.dataframe(extension_summary)
 
 fig3, ax3 = plt.subplots(figsize=(5, 3))
 extension_summary.plot(marker='o', color='green', ax=ax3)
-plt.title('Release Extension by Year')
-plt.ylabel('Feet')
-plt.xlabel('Year')
-plt.grid(True)
+ax3.set_title('Release Extension by Year')
+ax3.set_ylabel('Feet')
+ax3.set_xlabel('Year')
+ax3.grid(True)
+ax3.set_xticks(extension_summary.index)
+ax3.set_xticklabels(extension_summary.index.astype(int))
 st.pyplot(fig3)
 
 # -----------------------------
@@ -98,18 +104,18 @@ st.dataframe(whiff_rate)
 
 fig4, ax4 = plt.subplots(figsize=(5, 3))
 whiff_rate.plot(marker='o', color='red', ax=ax4)
-plt.title('Whiff Rate by Year')
-plt.ylabel('Whiff Rate')
-plt.xlabel('Year')
-plt.grid(True)
+ax4.set_title('Whiff Rate by Year')
+ax4.set_ylabel('Whiff Rate')
+ax4.set_xlabel('Year')
+ax4.grid(True)
+ax4.set_xticks(whiff_rate.index)
+ax4.set_xticklabels(whiff_rate.index.astype(int))
 st.pyplot(fig4)
 
 # -----------------------------
-# SECTION: Insights & Footer
+# SECTION: Footer
 # -----------------------------
 st.markdown('---')
-
-# Footer
 st.markdown('<center>Designed by Liza Osterdock.</center>', unsafe_allow_html=True)
 st.markdown('<center>© 2025 Next Level Nine. All rights reserved.</center>', unsafe_allow_html=True)
 st.markdown('<br>', unsafe_allow_html=True)
@@ -117,4 +123,3 @@ st.markdown('<br>', unsafe_allow_html=True)
 if base64_logo:
     image_html = f"<div style='text-align: center; margin-top: 10px;'><img src='data:image/png;base64,{base64_logo}' width='200'/></div>"
     st.markdown(image_html, unsafe_allow_html=True)
-
