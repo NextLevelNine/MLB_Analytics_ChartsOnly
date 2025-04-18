@@ -1,42 +1,22 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 import base64
 
-# Import header and HTML content sections
-from doval_intro import (
-    project_intro,
-    section_purpose_overview,
-    section_dashboard_insights,
-    section_smart_framework,
-    section_dev_process,
-    section_tech_stack,
-    section_mvp_scope,
-    section_future_enhancements,
-    section_about_creator,
-    section_certifications_contact,
-)
+# Import only the remaining HTML content section
+from doval_intro import section_dashboard_insights
 
-# Load and encode correct logo
+# Load and encode logo
 def load_logo(file_path):
     with open(file_path, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
 base64_logo = load_logo("Next Level Nine Logo.png")
 
-# Set Streamlit page configuration
+# Set page config
 st.set_page_config(page_title='📊 MLB Pitching Dashboard', page_icon='⚾', layout='wide')
 
-# Display visual header (title + pink baseball image + subheader)
-st.markdown(project_intro, unsafe_allow_html=True)
-st.markdown('---')
-
-# SECTION: Project Purpose + Overview
-st.markdown(section_purpose_overview, unsafe_allow_html=True)
-st.markdown('---')
-
-# Load Statcast dataset
+# Load dataset
 file_path = 'camilo_doval_5yr_statcast.csv'
 df = pd.read_csv(file_path)
 df['game_date'] = pd.to_datetime(df['game_date'], errors='coerce')
@@ -120,18 +100,11 @@ plt.xlabel('Year')
 plt.grid(True)
 st.pyplot(fig4)
 
-# Divider
+# -----------------------------
+# SECTION: Insights & Footer
+# -----------------------------
 st.markdown('---')
-
-# Remaining HTML sections
 st.markdown(section_dashboard_insights, unsafe_allow_html=True)
-st.markdown(section_smart_framework, unsafe_allow_html=True)
-st.markdown(section_dev_process, unsafe_allow_html=True)
-st.markdown(section_tech_stack, unsafe_allow_html=True)
-st.markdown(section_mvp_scope, unsafe_allow_html=True)
-st.markdown(section_future_enhancements, unsafe_allow_html=True)
-st.markdown(section_about_creator, unsafe_allow_html=True)
-st.markdown(section_certifications_contact, unsafe_allow_html=True)
 
 # Footer
 st.markdown('---')
