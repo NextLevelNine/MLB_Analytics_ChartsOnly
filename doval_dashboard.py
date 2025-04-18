@@ -113,6 +113,46 @@ ax4.set_xticklabels(whiff_rate.index.astype(int))
 st.pyplot(fig4)
 
 # -----------------------------
+# SECTION: Strikeout Rate (K%)
+# -----------------------------
+st.header('Strikeout Rate (K%) by Year')
+st.markdown('* Measures the percentage of plate appearances that result in a strikeout.')
+
+df['k'] = df['events'] == 'strikeout'
+k_rate = df.groupby('year')['k'].mean().round(3)
+st.dataframe(k_rate)
+
+fig5, ax5 = plt.subplots(figsize=(5, 3))
+k_rate.plot(marker='o', color='purple', ax=ax5)
+ax5.set_title('Strikeout Rate (K%) by Year')
+ax5.set_ylabel('Strikeout Rate')
+ax5.set_xlabel('Year')
+ax5.grid(True)
+ax5.set_xticks(k_rate.index)
+ax5.set_xticklabels(k_rate.index.astype(int))
+st.pyplot(fig5)
+
+# -----------------------------
+# SECTION: Zone Percentage (Zone%)
+# -----------------------------
+st.header('Zone Percentage (Zone%) by Year')
+st.markdown('* Percentage of pitches thrown in the strike zone.')
+
+zone_pct = df.groupby('year')['zone'].mean().round(3)
+st.dataframe(zone_pct)
+
+fig6, ax6 = plt.subplots(figsize=(5, 3))
+zone_pct.plot(marker='o', color='teal', ax=ax6)
+ax6.set_title('Zone Percentage by Year')
+ax6.set_ylabel('Zone %')
+ax6.set_xlabel('Year')
+ax6.grid(True)
+ax6.set_xticks(zone_pct.index)
+ax6.set_xticklabels(zone_pct.index.astype(int))
+st.pyplot(fig6)
+
+
+# -----------------------------
 # SECTION: Footer
 # -----------------------------
 st.markdown('---')
